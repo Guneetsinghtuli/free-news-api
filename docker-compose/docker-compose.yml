@@ -1,0 +1,6 @@
+version: '3'
+services:
+  web-scrapper:
+    build: ../.
+    ports:
+      - 3000:3000
