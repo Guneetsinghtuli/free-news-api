@@ -23,3 +23,9 @@ Open to dicuss about your ideas regarding it in the Issues section.
 4. To Install the dependencies you can use `npm install`
 
 5. Run the application using `node app.js`
+
+## Sources of the News
+
+- [TechCrunch](https://techcrunch.com/startups/)
+- [Indian Express](https://indianexpress.com)
+- [News 18](https://www.news18.com)

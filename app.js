@@ -11,8 +11,6 @@ app.use("/api/v1/news",newsRouter)
 
 
 
-
-
 app.listen(port,()=>{
     console.log(`Server is listening on Port ${port}`)
 })

@@ -1,6 +1,7 @@
 const news = {
     india:[
         {
+            source:"news18",
             url: "https://www.news18.com/politics/",
             selector:'.blog_list_row',
             context:'.blog_list',
@@ -8,6 +9,7 @@ const news = {
             heading:'h4'
         },
         {
+            source:"indianexpress",
             url:"https://indianexpress.com/section/india/",
             selector:'.articles',
             context: '.nation',
@@ -18,6 +20,7 @@ const news = {
     ],
     entertainment:[
         {
+            source:"news18",
             url: "https://www.news18.com/entertainment/",
             selector:'.blog_list_row',
             context:'.blog_list',
@@ -25,6 +28,7 @@ const news = {
             heading:'h4'
         },
         {
+            source:"indianexpress",
             url:"https://indianexpress.com/section/entertainment/",
             selector:'.articles',
             context: '.nation',
@@ -35,6 +39,7 @@ const news = {
     ],
     business:[
         {
+            source:"news18",
             url:  "https://www.news18.com/business/",
             selector:'.blog_list_row',
             context:'.blog_list',
@@ -42,9 +47,18 @@ const news = {
             heading:'h4'
         }
        ,
+       {
+           source: "TechCrunch",
+           url: "https://techcrunch.com/startups/",
+           selector: '.post-block',
+           context: '.content',
+           image: 'src',
+           heading:'.post-block__title'
+       }
     ],
     tech:[
         {
+            source:"news18",
             url:  "https://www.news18.com/tech/",
             selector:'.blog_list_row',
             context:'.blog_list',
@@ -55,6 +69,7 @@ const news = {
     ],
     auto:[
         {
+            source:"news18",
             url:  "https://www.news18.com/auto/",
             selector:'.blog_list_row',
             context:'.blog_list',
@@ -65,6 +80,7 @@ const news = {
     ],
     sports:[
         {
+            source:"news18",
             url:  "https://www.news18.com/sports/",
             selector:'.blog_list_row',
             context:'.blog_list',
@@ -72,6 +88,7 @@ const news = {
             heading:'h4'
         },
         {
+            source:"indianexpress",
             url:"https://indianexpress.com/section/sports/",
             selector:'.articles',
             context: '.nation',
@@ -82,6 +99,7 @@ const news = {
     ],
     world:[
         {
+            source:"news18",
             url:  "https://www.news18.com/world/",
             selector:'.blog_list_row',
             context:'.blog_list',
