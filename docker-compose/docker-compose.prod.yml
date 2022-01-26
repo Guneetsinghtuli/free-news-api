@@ -3,3 +3,7 @@ services:
   web-scrapper:
     env_file:
       - ../.env.production
+    command: npm run prod
+  nginx:
+    ports:
+      - "80:80"
