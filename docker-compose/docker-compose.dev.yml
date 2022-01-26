@@ -6,3 +6,7 @@ services:
       - /app/node_modules
     env_file:
       - ../.env.development
+    command: npm run dev
+  nginx:
+    volumes:
+      - ../nginx/default.conf:/etc/nginx/conf.d/default.conf:ro

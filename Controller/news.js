@@ -2,12 +2,9 @@ const axios = require("axios");
 const Cheerio = require("cheerio");
 const news = require("../config/newstype");
 
-const getNews = async (req, res, next) => {
-  let number = req.query.number;
-  let reqNews = req.query.type;
-  let source = req.query.source;
 
-  let url;
+
+const returnURL = (reqNews) =>{
   if (reqNews == "india") {
     url = news.india;
   } else if (reqNews == "entertainment") {
@@ -25,28 +22,44 @@ const getNews = async (req, res, next) => {
   } else{
     url = news.india;
   }
+  return url;
+}
 
+const newsObject = async (url) =>{
   let list = [];
   let j = 1;
-  try {
-    await Promise.all(
-      url.map(async (element) => {
-        await axios.get(element.url).then((response) => {
-          let html = response.data;
-          const $ = Cheerio.load(html);
-          $(element.selector, element.context, html).each((i, select) => {
-            let obj = {
-              id: j++,
-              source: element.source,
-              image: $(select).find("img").attr("src"),
-              heading: $(select).find(element.heading).text().trim(),
-              url: $(select).find("a").attr("href"),
-            };
-            list.push(obj);
-          });
+  
+
+  await Promise.all(
+    url.map(async (element) => {
+      await axios.get(element.url).then((response) => {
+        let html = response.data;
+        const $ = Cheerio.load(html);
+        $(element.selector, element.context, html).each((i, select) => {
+          let obj = {
+            id: j++,
+            source: element.source,
+            image: $(select).find("img").attr("src"),
+            heading: $(select).find(element.heading).text().trim(),
+            url: $(select).find("a").attr("href"),
+          };
+          list.push(obj);
         });
-      })
-    );
+      });
+    })
+  );
+  return list;
+}
+
+const getNews = async (req, res, next) => {
+  let number = req.query.number;
+  let reqNews = req.query.type;
+  let source = req.query.source;
+
+  let url = returnURL(reqNews);
+  
+  try {
+    let list = await newsObject(url)
       
     if (number !== undefined) {
       let newList = list.slice(0, number);
@@ -67,6 +80,10 @@ const getNews = async (req, res, next) => {
     });
   }
 };
+
+
 module.exports = {
   getNews,
+  returnURL,
+  newsObject
 };

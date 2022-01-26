@@ -2,5 +2,10 @@ version: '3'
 services:
   web-scrapper:
     build: ../.
+  nginx:
+    image: nginx:stable-alpine
     ports:
-      - 3000:3000
+      - "3000:80"
+    depends_on:
+      - web-scrapper
+    
