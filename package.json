@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "prod":"node app.js",
-    "test":"jest --watch --detectOpenHandles"
+    "test":"jest"
   },
   "keywords": [],
   "author": "",
